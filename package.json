@@ -1,0 +1,119 @@
+{
+  "name": "starter-cli",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.8.0",
+  "description": "cli 模板",
+  "license": "MIT",
+  "homepage": "https://github.com/daguanren21/starter-cli#readme",
+  "bugs": {
+    "url": "https://github.com/daguanren21/starter-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daguanren21/starter-cli.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": {
+        "require": "./dist/index.d.ts",
+        "import": "./dist/index.d.mts"
+      },
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./cli": {
+      "types": {
+        "require": "./dist/cli.d.ts",
+        "import": "./dist/cli.d.mts"
+      },
+      "require": "./dist/cli.js",
+      "import": "./dist/cli.mjs"
+    },
+    "./nuxt": {
+      "types": {
+        "require": "./dist/nuxt.d.ts",
+        "import": "./dist/nuxt.d.mts"
+      },
+      "require": "./dist/nuxt.js",
+      "import": "./dist/nuxt.mjs"
+    },
+    "./*": "./*"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "bin": {
+    "starter-cli": "./bin/index.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "pnpm check && tsup",
+    "test": "tsx ./src/cli.ts --update && vitest",
+    "check": "tsx ./src/cli.ts",
+    "update-hash": "tsx ./src/cli.ts --update",
+    "release": "bumpp && pnpm publish",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "@nuxt/kit": "^3.0.0",
+    "@nuxt/schema": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@types/prompts": "^2.4.7",
+    "cac": "^6.7.14",
+    "consola": "^3.2.3",
+    "find-up": "^6.3.0",
+    "fs-extra": "^11.1.1",
+    "handlebars": "^4.7.8",
+    "json-to-ts": "^1.7.0",
+    "md5": "^2.3.0",
+    "picocolors": "^1.0.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "^3.7.4",
+    "@nuxt/schema": "^3.7.4",
+    "@sxzz/eslint-config": "^3.6.2",
+    "@sxzz/prettier-config": "^1.0.4",
+    "@types/fs-extra": "^11.0.2",
+    "@types/md5": "^2.3.3",
+    "@types/node": "^20.8.3",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.51.0",
+    "eslint-define-config": "^1.24.0",
+    "fast-glob": "^3.3.1",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11",
+    "vitest": "^0.34.6"
+  },
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "prettier": "@sxzz/prettier-config"
+}
